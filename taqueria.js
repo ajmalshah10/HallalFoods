@@ -29,7 +29,7 @@ var tacoDetail = function(id, name, pictureUrl, cuisine, rating, address) {
 var id = getParameterByName("id", window.location.href);
 
 
-$.getJSON( `https://api.airtable.com/v0/appSrgke7E0ElZhMY/Restaurants/${id}?api_key=key2m8VgwGT2iztad`, function( val ) {
+$.getJSON( "https://api.airtable.com/v0/appelXvxcksedaLMj/Table%201?api_key=keyqw1QagTLJCEBx8", function( val ) {
   // console.log(data);
   var items = [];
   items.push(`<div class="row">`);
