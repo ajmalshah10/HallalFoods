@@ -1,16 +1,18 @@
 
 
 
-var tacoListItem = function(id, name, pictureUrl, cuisine, rating) {
+var halalfoodsListItem = function(id, name, pictureUrl, cuisine, rating, phonenumber, address) {
   return `<div class="col-sm-6">
     <div class="card mb-4 box-shadow">
-      <a href="taqueria.html?id=${id}"><img class="card-img-top" src="${pictureUrl}"></a>
+      <a href="halalfoods.html?id=${id}"><img class="card-img-top" src="${pictureUrl}"></a>
       <div class="card-body">
-        <h2><a href="taqueria.html?id=${id}">${name}</a></h2>
+        <h2><a href="halalfoods.html?id=${id}">${name}</a></h2>
+        <h4> ${phonenumber} </h4>
+        <h5> ${address} </h5>
         <p class="card-text">${cuisine}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <a href="taqueria.html?id=${id}" class="btn btn-sm btn-outline-secondary">View details</a>
+            <a href="halalfoods.html?id=${id}" class="btn btn-sm btn-outline-secondary">View details</a>
             <button type="button" class="btn btn-sm btn-outline-secondary">Add to favorites</button>
           </div>
           <small class="text-muted">${rating}</small>
@@ -31,10 +33,12 @@ $.getJSON( "https://api.airtable.com/v0/appelXvxcksedaLMj/Table%201?api_key=keyq
     var pictureUrl = val.fields["Pictures"] ? val.fields["Pictures"][0].url : '';
     var cuisine = val.fields["Cuisine"];
     var rating = val.fields["Rating"];
-    var itemHTML = tacoListItem(id, name, pictureUrl, cuisine, rating);
+    var phonenumber = val.fields["Phone-number"];
+    var address = val.fields["Address"];
+    var itemHTML = halalfoodsListItem(id, name, pictureUrl, cuisine, rating, phonenumber, address);
     items.push(itemHTML);
   });
   items.push(`</div>`);
 
-  $(".taqueria-list" ).append(items.join(""));
+  $(".halal-foods-list" ).append(items.join(""));
 });
